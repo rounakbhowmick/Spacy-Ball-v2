@@ -7,41 +7,62 @@
         radial-gradient(circle at 68% 87%, rgba(66, 66, 66, 0.06) 0%, rgba(66, 66, 66, 0.06) 50%, rgba(105, 105, 105, 0.06) 50%, rgba(105, 105, 105, 0.06) 100%),
         radial-gradient(circle at 38% 50%, rgba(123, 123, 123, 0.06) 0%, rgba(123, 123, 123, 0.06) 50%, rgba(172, 172, 172, 0.06) 50%, rgba(172, 172, 172, 0.06) 100%),
         linear-gradient(90deg, hsl(18, 0%, 1%), hsl(18, 0%, 1%));
-    box-shadow: 1px 2px 13px 4px rgb(231, 13, 13);
+    box-shadow: 0px 0px 14px 10px rgb(231, 13, 13);
     text-align: center;
     color: white;
 }
 
 body {
-    background-color: rgba(224, 137, 24, 0.219);
+    background-color: rgba(12, 12, 12, 0.719);
 }
 
 .btn {
+
     display: inline-block;
-    padding: 15px;
-    border: 1px solid black;
-    background-color: green;
+    padding: 1rem 2.2rem;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    background-image: radial-gradient(circle at center center, rgb(241, 195, 19), rgb(244, 150, 32), rgb(246, 105, 45), rgb(249, 59, 57), rgb(251, 14, 70));
     color: white;
     font-size: 2em;
     text-align: center;
+    cursor: pointer;
+    font-weight: 900;
+
+}
+
+.btn:hover {
+    background-image: radial-gradient(circle at top center, rgb(244, 234, 104), rgb(234, 179, 103), rgb(224, 125, 103), rgb(214, 70, 102), rgb(204, 15, 101));
+}
+
+.logo {
+    padding-top: 2rem;
+}
+
+.message {
+    padding-top: 14rem;
 }
 
 .pokemon {
+
     position: absolute;
     width: 5rem;
-    background-color: yellow;
     height: 5rem;
     border-radius: 50%;
-    top: 20%;
-    left: 48%;
+    bottom: 50%;
+    left: 45%;
 }
 
 
 .topbar {
     text-align: center;
-    padding: 5px;
+    color: rgb(0, 255, 157);
+    font-weight: 900;
+    padding-bottom: 0.4rem;
     font-family: sans-serif;
-    font-size: 1.5em;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+
 }
 
 .redballs {
@@ -66,6 +87,7 @@ body {
 }
 
 
+
 .final-score {
     display: flex;
     justify-content: center;
@@ -80,9 +102,26 @@ body {
     justify-content: center;
     font-size: 5rem;
     display: none;
+    /* standard gradient background */
+    background: linear-gradient(rgb(251, 255, 10), rgb(255, 0, 0));
+    font-weight: 900;
+
+    /* clip hackery */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .start {
     display: flex;
     align-items: flex-end;
+}
+
+.retry {
+    position: absolute;
+    display: none;
+    bottom: 10rem;
+    left: 35rem;
+    background-color: aliceblue;
+    width: 0%;
+    height: 0%;
 }
