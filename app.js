@@ -165,7 +165,7 @@ function makeRedBalls() {
 function endGame() {
     const whiteballs = document.querySelectorAll(".whiteballs");
     const redballs = document.querySelectorAll(".redballs");
-    finalscore.textContent = `SCORE ${player.score}`;
+    finalscore.textContent = `YOUR SCORE ${player.score}`;
     retry.style.display = "block"
     finalscore.style.display = "block";
     gameover.style.display = "block"
