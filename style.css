@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
 .container {
     position: relative;
     height: 90vh;
@@ -14,6 +16,8 @@
 
 body {
     background-color: rgba(12, 12, 12, 0.719);
+    font-family: 'Work Sans',
+        sans-serif;
 }
 
 .btn {
@@ -86,15 +90,16 @@ body {
     left: 0;
 }
 
-
-
 .final-score {
     display: flex;
     justify-content: center;
-    padding: 4rem 0;
+    padding: 3rem 0;
     line-height: 5rem;
-    font-size: 3.5rem;
+    font-size: 5rem;
     display: none;
+    color: rgba(0, 255, 76, 0.822);
+    text-shadow: 0px 8px 8px rgba(255, 255, 255, 0.4);
+    font-weight: 900;
 }
 
 .gameover {
@@ -102,13 +107,6 @@ body {
     justify-content: center;
     font-size: 5rem;
     display: none;
-    /* standard gradient background */
-    background: linear-gradient(rgb(251, 255, 10), rgb(255, 0, 0));
-    font-weight: 900;
-
-    /* clip hackery */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .start {
@@ -119,9 +117,54 @@ body {
 .retry {
     position: absolute;
     display: none;
-    bottom: 10rem;
-    left: 35rem;
+    /*bottom: 10rem;
+    left: 35rem;*/
+    bottom: 40%;
+    left: 47%;
     background-color: aliceblue;
     width: 0%;
     height: 0%;
+}
+
+.cross {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+}
+
+.game-instructions {
+    display: none;
+    background-image: url(./images/abstract-antique-backdrop-background-129731.jpg);
+    position: absolute;
+    letter-spacing: 0.1rem;
+    line-height: 1.5rem;
+    padding: 2rem;
+    color: black;
+    left: 34%;
+    top: 35%;
+    width: 20rem;
+    height: 10rem;
+    background-color: grey;
+    font-weight: 800;
+    text-align: left;
+}
+
+.cross .fas {
+    color: orangered;
+}
+
+.game-instructions h3 {
+    color: brown;
+}
+
+.fas {
+    color: rgb(255, 145, 1);
+}
+
+.fas:hover {
+    color: rgb(255, 198, 123);
+}
+
+.info-icon {
+    padding-top: 2rem;
 }

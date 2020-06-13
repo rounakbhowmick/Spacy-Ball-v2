@@ -1,7 +1,6 @@
 //Rounak
 //Query Selector
 //Objective:In this game if pokemon ball gets touched by red balls game is terminated,and if it is touched by white balls then points is added.Make sure you use keyboards arrow key to operate 
-
 const message = document.querySelector(".message");
 const scoreOutput = document.querySelector(".score");
 const btn = document.querySelector(".btn");
@@ -13,16 +12,20 @@ const gameover = document.querySelector(".gameover");
 const logo = document.querySelector(".logo");
 const retry = document.querySelector(".retry");
 let boundContainer = container.getBoundingClientRect();
+let infoicon = document.querySelector(".info-icon");
+let cross = document.querySelector(".cross");
 //Event Listener
 btn.addEventListener("click", startGame);
+cross.addEventListener("click", crossdisable);
 retry.addEventListener("click", startGame);
+infoicon.addEventListener("click", info);
 document.addEventListener("keydown", pressKeyOn);
 document.addEventListener("keyup", pressKeyOff);
 //Player Object
 let player = {
     score: 0,
     redballs: 1,
-    whiteballs: 100,
+    whiteballs: 10000,
     inPlay: false,
     speed: 5
 };
@@ -46,10 +49,17 @@ function pressKeyOff(event) {
     keys[event.key] = false;
 }
 
+function info() {
+    document.querySelector(".game-instructions").style.display = "block";
+}
 
+function crossdisable() {
+    document.querySelector(".game-instructions").style.display = "none";
+}
 
 function startGame() {
     document.querySelector(".topbar").style.opacity = "10";
+    infoicon.style.display = "none";
     message.style.display = "none";
     finalscore.style.display = "none";
     gameover.style.display = "none"
@@ -58,13 +68,12 @@ function startGame() {
     logo.style.display = "none"
     player.score = 0;
     player.redballs = 1;
-    player.whiteballs = 2;
+    player.whiteballs = 1000;
     player.inPlay = true;
     retry.style.display = "none";
     scoreupdate();
     setupballs(4);
     requestAnimationFrame(playGame);
-    //
 
     //Launch animaion
 }
@@ -181,13 +190,16 @@ function endGame() {
 
 function isCollide(a, b) {
     //a=Pokemon b=white or red balls
+
     let aRect = a.getBoundingClientRect();
     let bRect = b.getBoundingClientRect();
     let pythag = getDistance(aRect.x, aRect.y, bRect.x, bRect.y);
-    //console.log(`pythag:${pythag} calc${(aRect.height / 2 + bRect.width / 2)}`);
+
     if (pythag < (aRect.height / 2 + bRect.height / 2)) {
         if (b.classList.value === "whiteballs") {
             b.style.opacity = "0";
+            vanish(b);
+
             player.score += 1;
             scoreupdate();
         } else
@@ -195,7 +207,11 @@ function isCollide(a, b) {
     }
 }
 
-
+function vanish(b) {
+    setInterval(() => {
+        b.style.opacity = "10";
+    }, 10000);
+}
 //Pythagorus Theorem
 function getDistance(x1, y1, x2, y2) {
     let xdistance = x2 - x1;
