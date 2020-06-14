@@ -168,3 +168,30 @@ body {
 .info-icon {
     padding-top: 2rem;
 }
+
+.mobile-compatibility-message p {
+    opacity: 0;
+}
+
+/*Media Queries */
+@media only screen and (max-width: 768px) {
+
+    /* For mobile phones: */
+    .btn,
+    .info-icon,
+    .pokemon,
+    .logo {
+        display: none;
+    }
+
+    .topbar {
+        opacity: 0;
+    }
+
+    .mobile-compatibility-message p {
+        opacity: 1;
+        color: white;
+        text-align: center;
+        line-height: 1.4rem;
+    }
+}

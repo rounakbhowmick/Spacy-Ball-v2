@@ -1,6 +1,6 @@
 //Rounak
 //Query Selector
-//Objective:In this game if pokemon ball gets touched by red balls game is terminated,and if it is touched by white balls then points is added.Make sure you use keyboards arrow key to operate 
+//Objective:In this game if pokemon ball gets touched by red balls game is terminated,and if it is touched by white balls then bonus points is added.Make sure you use keyboards arrow key to operate 
 const message = document.querySelector(".message");
 const scoreOutput = document.querySelector(".score");
 const btn = document.querySelector(".btn");
@@ -58,7 +58,7 @@ function crossdisable() {
 }
 
 function startGame() {
-    document.querySelector(".topbar").style.opacity = "10";
+    document.querySelector(".topbar").style.opacity = "1";
     infoicon.style.display = "none";
     message.style.display = "none";
     finalscore.style.display = "none";
@@ -80,37 +80,27 @@ function startGame() {
 
 function playGame() {
     if (player.inPlay == true) {
-        if (keys.ArrowDown && boundPokemon.y < (boundContainer.height - boundPokemon.height - 20)) {
-            boundPokemon.y += player.speed;
-        }
-        if (keys.ArrowUp && boundPokemon.y > 0) {
-            boundPokemon.y -= player.speed;
-        }
+        //Boundary condition of pokemon ball
+        if (keys.ArrowDown && boundPokemon.y < (boundContainer.height - boundPokemon.height - 20)) boundPokemon.y += player.speed;
+        if (keys.ArrowUp && boundPokemon.y > 0) boundPokemon.y -= player.speed;
         if (keys.ArrowLeft && boundPokemon.x > 0) boundPokemon.x -= player.speed;
-        if (keys.ArrowRight && boundPokemon.x < (boundContainer.width - boundPokemon.width - 20)) {
-            boundPokemon.x += player.speed;
-        }
+        if (keys.ArrowRight && boundPokemon.x < (boundContainer.width - boundPokemon.width - 20)) boundPokemon.x += player.speed;
         pokemon.style.left = boundPokemon.x + "px";
         pokemon.style.top = boundPokemon.y + "px";
-        //console.log(pokemon);
-
         requestAnimationFrame(playGame);
 
         let tempEnemy = document.querySelectorAll(".redballs");
         let tempFriend = document.querySelectorAll(".whiteballs")
-        for (let i = 0; i < tempFriend.length; i++) {
-            bgMover(tempEnemy[i]);
-            bgMover(tempFriend[i]);
+        for (let ball = 0; ball < tempFriend.length; ball++) {
+            bgMover(tempEnemy[ball]);
+            bgMover(tempFriend[ball]);
         }
     }
-
 }
 
-
+//Moving red and white balls from left to right
 function bgMover(e) {
     e.x += e.speed;
-
-    //console.log(boundContainer.width);
     if (e.x > boundContainer.width - 100) {
         e.x = 100;
         e.y = Math.floor(Math.random() * boundContainer.height - 75);
@@ -130,7 +120,7 @@ function setupballs(num) {
         makeRedBalls();
     }
 }
-
+//Forming red and white balls
 function makeWhiteBalls() {
     if (player.whiteballs > 0) {
         let temp = player.whiteballs;
@@ -165,13 +155,13 @@ function makeRedBalls() {
 function endGame() {
     const whiteballs = document.querySelectorAll(".whiteballs");
     const redballs = document.querySelectorAll(".redballs");
-    finalscore.textContent = `YOUR SCORE ${player.score}`;
+    finalscore.textContent = `SCORE ${player.score}`;
     retry.style.display = "block"
     finalscore.style.display = "block";
     gameover.style.display = "block"
     document.querySelector(".topbar").style.opacity = "0";
     pokemon.style.display = "none";
-
+    //Disappearing all the white and red balls from the screen
     whiteballs.forEach(node => {
         node.style.display = "none"
     })
@@ -180,6 +170,7 @@ function endGame() {
     })
 
     //Local Storage
+    //Storing data to local storage for getting high score
     if ((localStorage.getItem('score') < player.score) || (localStorage.getItem("score") === null)) {
         finalscore.textContent = `NEW HIGH SCORE  ${player.score}`;
         finalscore.style.color = "yellow";
@@ -187,7 +178,7 @@ function endGame() {
     }
     player.inPlay = false;
 }
-
+//This function occours when collision takes place between pokemon ball and different colour ball
 function isCollide(a, b) {
     //a=Pokemon b=white or red balls
 
@@ -199,14 +190,13 @@ function isCollide(a, b) {
         if (b.classList.value === "whiteballs") {
             b.style.opacity = "0";
             vanish(b);
-
             player.score += 1;
             scoreupdate();
         } else
             endGame();
     }
 }
-
+//Toggling white balls property every 10sec
 function vanish(b) {
     setInterval(() => {
         b.style.opacity = "10";
