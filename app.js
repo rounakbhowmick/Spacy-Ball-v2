@@ -31,7 +31,7 @@ let player = {
 };
 
 
-//Mouse Keys 
+//Keyboard arrows 
 let keys = {
     ArrowUp: false,
     ArrowDown: false,
