@@ -21,7 +21,6 @@ retry.addEventListener("click", startGame);
 infoicon.addEventListener("click", info);
 document.addEventListener("keydown", pressKeyOn);
 document.addEventListener("keyup", pressKeyOff);
-
 //Player Object
 let player = {
     score: 0,
@@ -32,7 +31,7 @@ let player = {
 };
 
 
-//KEYBOARD Keys 
+//Mouse Keys 
 let keys = {
     ArrowUp: false,
     ArrowDown: false,
@@ -60,7 +59,6 @@ function crossdisable() {
 
 function startGame() {
     document.querySelector(".topbar").style.opacity = "1";
-    document.querySelector(".pokemoncopy").style.display = "none";
     infoicon.style.display = "none";
     message.style.display = "none";
     finalscore.style.display = "none";
@@ -80,26 +78,15 @@ function startGame() {
     //Launch animaion
 }
 
-container.addEventListener("mousemove", e => {
-    pokemon.style.left = e.clientX + "px";
-    pokemon.style.top = e.clientY + "px";
-})
-
 function playGame() {
     if (player.inPlay == true) {
         //Boundary condition of pokemon ball
-        if (keys.ArrowDown && boundPokemon.y < (boundContainer.height - boundPokemon.height)) boundPokemon.y += player.speed;
+        if (keys.ArrowDown && boundPokemon.y < (boundContainer.height - boundPokemon.height - 20)) boundPokemon.y += player.speed;
         if (keys.ArrowUp && boundPokemon.y > 0) boundPokemon.y -= player.speed;
         if (keys.ArrowLeft && boundPokemon.x > 0) boundPokemon.x -= player.speed;
         if (keys.ArrowRight && boundPokemon.x < (boundContainer.width - boundPokemon.width - 20)) boundPokemon.x += player.speed;
-        // pokemon.style.left = boundPokemon.x + "px";
-        // pokemon.style.top = boundPokemon.y + "px";
-
-
-        //if (pokemon.top < (boundContainer.height - pokemon.height)) pokemon.top += player.speed;
-        //if (boundPokemon.y > 0) boundPokemon.y -= player.speed;
-        //if (pokemon.left > 0) pokemon.left -= player.speed;
-        //if (keys.ArrowRight && boundPokemon.x < (boundContainer.width - boundPokemon.width - 20)) boundPokemon.x += player.speed;
+        pokemon.style.left = boundPokemon.x + "px";
+        pokemon.style.top = boundPokemon.y + "px";
         requestAnimationFrame(playGame);
 
         let tempEnemy = document.querySelectorAll(".redballs");
@@ -122,6 +109,7 @@ function bgMover(e) {
         e.style.top = e.y + "px";
     }
     e.style.left = e.x + "px";
+    console.log(e.x, e.y);
     isCollide(pokemon, e);
 
 }
