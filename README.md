@@ -8,7 +8,7 @@ USE THE KEYBOARD ARROW KEYS TO CONTROL THE POKEMON BALL
 AVOID RED COLOUR BALLS
 ```
 
-  <img src="https://github.com/rounakbhowmick/Spacy-Ball-v2/blob/master/Layout%201.png" width="1024px">
+  <img src="https://github.com/rounakbhowmick/Spacy-Ball-v2/blob/master/Layout%201.png" width="800px">
 
 
 Refer: https://github.com/rounakbhowmick/Spacy-Ball-v2
