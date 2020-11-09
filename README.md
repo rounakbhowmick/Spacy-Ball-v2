@@ -10,4 +10,4 @@ AVOID RED COLOUR BALLS
 
 Refer: https://github.com/rounakbhowmick/Spacy-Ball-v2
 
-Link: spacyball-rounak.netlify.app/
+Link:  https://spacyball-rounak.netlify.app/
