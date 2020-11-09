@@ -16,6 +16,7 @@ AVOID RED COLOUR BALLS
  <p align="center">
   <img src="https://github.com/rounakbhowmick/Spacy-Ball-v2/blob/master/Layout%202.png" width="800px">
 </p>
+
 ## Layout 3
  <p align="center">
   <img src="https://github.com/rounakbhowmick/Spacy-Ball-v2/blob/master/Layout%203.png" width="800px">
