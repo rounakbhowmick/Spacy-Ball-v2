@@ -13,7 +13,7 @@ Spacy Ball is a  fun and addictive game. Here the challenge is to escape from th
 
 ## Layout 3
  <p align="center">
-  <img src="https://github.com/rounakbhowmick/ChatBot/blob/main/Layout3.png" width="800px">
+  <img src="https://github.com/rounakbhowmick/Spacy-Ball-v2/blob/master/Layout%203.png" width="800px">
 </p>
 
 Refer: https://github.com/rounakbhowmick/Spacy-Ball-v2
